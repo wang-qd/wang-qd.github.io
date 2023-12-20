@@ -33,7 +33,7 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github-alt
-      link: https://github.com/wang-qd
+      link: https://wangqiudong.com
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -53,4 +53,4 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
 
 copyright: |
-  &copy; 2023 <a href="https://github.com/wang-qd"  target="_blank" rel="noopener">WANG QD</a>
+  &copy; 2023 <a href="https://wangqiudong.com"  target="_blank" rel="noopener">WANG QD</a>
