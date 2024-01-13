@@ -1,0 +1,1085 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://wang-qd.github.io/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%A6%BB%E6%95%A3%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2/">
+      
+      
+        <link rel="prev" href="../math/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>离散傅立叶变换 - WANG's Blogs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="离散傅立叶变换 - WANG's Blogs" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://wang-qd.github.io/assets/images/social/数学基础/离散傅立叶变换.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://wang-qd.github.io/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%A6%BB%E6%95%A3%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="离散傅立叶变换 - WANG's Blogs" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://wang-qd.github.io/assets/images/social/数学基础/离散傅立叶变换.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WANG&#39;s Blogs" class="md-header__button md-logo" aria-label="WANG's Blogs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WANG's Blogs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              离散傅立叶变换
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA/%E9%87%8D%E5%BB%BA%E7%AE%97%E6%B3%95/%E5%B9%B3%E8%A1%8C%E6%9D%9F/%E6%AD%A3%E6%8A%95%E5%BD%B1%E4%B8%8E%E5%8F%8D%E6%8A%95%E5%BD%B1/" class="md-tabs__link">
+          
+  
+  图像重建
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../math/" class="md-tabs__link">
+          
+  
+  数学基础
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WANG&#39;s Blogs" class="md-nav__button md-logo" aria-label="WANG's Blogs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    WANG's Blogs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    图像重建
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            图像重建
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    重建算法
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            重建算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    平行束
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            平行束
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA/%E9%87%8D%E5%BB%BA%E7%AE%97%E6%B3%95/%E5%B9%B3%E8%A1%8C%E6%9D%9F/%E6%AD%A3%E6%8A%95%E5%BD%B1%E4%B8%8E%E5%8F%8D%E6%8A%95%E5%BD%B1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    正投影与反投影
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    扇形束
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            扇形束
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2_1" id="__nav_2_1_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据重排
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_1_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            数据重排
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA/%E9%87%8D%E5%BB%BA%E7%AE%97%E6%B3%95/%E6%89%87%E5%BD%A2%E6%9D%9F/%E6%95%B0%E6%8D%AE%E9%87%8D%E6%8E%92/%E5%8A%A0%E6%9D%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加权
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA/%E9%87%8D%E5%BB%BA%E7%AE%97%E6%B3%95/%E6%89%87%E5%BD%A2%E6%9D%9F/%E6%95%B0%E6%8D%AE%E9%87%8D%E6%8E%92/%E7%AD%89%E8%A7%92%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    等角度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA/%E9%87%8D%E5%BB%BA%E7%AE%97%E6%B3%95/%E6%89%87%E5%BD%A2%E6%9D%9F/%E6%95%B0%E6%8D%AE%E9%87%8D%E6%8E%92/%E7%AD%89%E9%97%B4%E8%B7%9D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    等角度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    锥形束
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            锥形束
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA/%E9%87%8D%E5%BB%BA%E7%AE%97%E6%B3%95/%E9%94%A5%E5%BD%A2%E6%9D%9F/reconAlg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CBCT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    数学基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            数学基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    小学课堂
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    离散傅立叶变换
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    离散傅立叶变换
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 复数形式傅里叶变换与逆变换
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dtft" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 离散时间傅里叶变换(DTFT)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dftidft" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 离散傅立叶变换(DFT)与逆变换(IDFT)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 离散傅立叶变换的物理意义
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      连续信号傅立叶变换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      离散时间傅立叶变换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      离散傅立叶变换
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考文献
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>离散傅立叶变换</h1>
+
+<h2 id="1">1. 复数形式傅里叶变换与逆变换</h2>
+<p>傅里叶变换一般指的是连续傅里叶变换，其定义如下:</p>
+<div class="arithmatex">\[F(\omega)=\int\limits_{-\infty}^{+\infty}f(t)e^{-i\omega t}dt\]</div>
+<p>傅里叶逆变换的定义如下:</p>
+<div class="arithmatex">\[f(t)=\frac{1}{2\pi}\int\limits_{-\infty}^{+\infty}F(\omega)e^{i\omega t}d\omega\]</div>
+<p>有了傅里叶变换了，为什么还要搞出个离散傅里叶变换呢？我们从上面公式可以看出，不管是傅里叶变换还是逆变换都是正负无穷的连续积分，这在数学公式上尚可以根据微分及极限求解公式进行计算，但却不太方便在计算机上实现，因为计算机是一个离散系统，那离散傅里叶变换就是用来解决这个问题的，使用计算机这个离散系统进行有限近似计算。不过在讲离散傅里叶变换之前，先说说离散时间傅里叶变换(DTFT)。</p>
+<h2 id="2-dtft">2. 离散时间傅里叶变换(DTFT)</h2>
+<p>离散时间傅立叶变换处理对象：<strong>无穷时间跨度</strong>的固定采样频率的<strong>离散</strong>信号点，即模拟信号本身无周期，且时间跨度无穷大，采样频率固定。虽然是离散点，但是信号本身时间跨度无穷，因此导致离散后对应的最大周期信号的周期无穷大，频率无穷小。</p>
+<p>在离散系统中，假如<span class="arithmatex">\(x(t)\)</span>为连续系统信号，要转换成离散系统，就要先进行采样，采样频率为<span class="arithmatex">\(f_s\)</span> ，采样点时间间隔为<span class="arithmatex">\(T_s=\frac{1}{f_s}\)</span></p>
+<p>冲击采样序列为:</p>
+<div class="arithmatex">\[\delta_s(t)=\sum\limits_{n = -\infty}^{\infty}\delta(t-nT_s)\]</div>
+<p>取样之后的信号为:</p>
+<div class="arithmatex">\[x_s(t)=\sum\limits_{n = -\infty}^{\infty}x(t)\delta(t-nT_s)\]</div>
+<p>这里t如果取的不是<span class="arithmatex">\(T_s\)</span>的整数倍，其值没有定义，即只能取<span class="arithmatex">\(T_s\)</span>的整数倍。</p>
+<p>连续信号的傅里叶变换的定义为:</p>
+<div class="arithmatex">\[X(\omega)=\int\limits_{-\infty}^{+\infty}x(t)e^{-i\omega t}dt\]</div>
+<p>则采样后的信号傅里叶变换为:</p>
+<div class="arithmatex">\[X_s(\omega)=\int\limits_{-\infty}^{+\infty}(\sum\limits_{n = -\infty}^{\infty}x(t)\delta(t-nT_s))e^{-i\omega t}dt\]</div>
+<p>交换一下积分与求和顺序:</p>
+<div class="arithmatex">\[X_s(\omega)=\sum\limits_{n = -\infty}^{\infty}\int\limits_{-\infty}^{+\infty}x(t)\delta(t-nT_s)e^{-i\omega t}dt\]</div>
+<p>由<span class="arithmatex">\(\delta(x)\)</span>筛选性:</p>
+<div class="arithmatex">\[\int\limits_{-\infty}^{+\infty}f(x)\delta(x-x_0)dx=f(x_0)\]</div>
+<p>可得：</p>
+<div class="arithmatex">\[X_s(\omega)=\sum\limits_{n = -\infty}^{\infty}x(nT_s)e^{-i\omega nT_s}\]</div>
+<p>对数字系统而言，我们只有<span class="arithmatex">\(x(t)\)</span>采样后的信号<span class="arithmatex">\(\left\{x[n]\right\}\)</span>，注意，它是一个序列，第<span class="arithmatex">\(n\)</span>个采样发生在时间<span class="arithmatex">\(t=nTs\)</span>，因此，可将连续信号的傅里叶变换写成如下形式:</p>
+<div class="arithmatex">\[X_s(\omega)=\sum\limits_{n = -\infty}^{\infty}x(n)e^{-i\omega nT_s}\]</div>
+<p>上式称为离散时间傅里叶变换(Discrete Time Fourier Transform)，简称DTFT，也就是无限长离散信号如何进行傅里叶变换。</p>
+<h2 id="3-dftidft">3. 离散傅立叶变换(DFT)与逆变换(IDFT)</h2>
+<p>离散时间傅里叶变换中<strong>原始信号还是无限长的，即使采样后，采样点也是无限个，可以认为周期为无限长</strong>，导致即使离散采样后进行分解变换得到的频谱趋向于连续。因为现实中不能记录存储无穷大时间跨度的模拟信号，连续的频谱不利于计算机处理，所以频率也要离散化才行，所需要的技术就是离散傅里叶变换DFT(Discrete Fourier Transform)，即具有周期特性离散信号的傅里叶级数(就是将无限长的离散信号进行截短至N个采样点，然后将这个N个采样点进行周期延拓，变成周期信号，这样其频率就离散了)。</p>
+<p>离散傅里叶变换与连续傅里叶变换“类似”，只不过把积分换成级数，DFT以及IDFT的定义如下:</p>
+<div class="arithmatex">\[X(k)=\sum\limits_{n = 0}^{N-1}x(n)e^{-i\frac{2\pi}{N}nk},k=0,1,2..N-1\]</div>
+<div class="arithmatex">\[x(n)=\frac{1}{N}\sum\limits_{k = 0}^{N-1}X(k)e^{i\frac{2\pi}{N}nk},n=0,1,2..N-1\]</div>
+<p>（可知：对于<span class="arithmatex">\(N\)</span>维数组的离散傅立叶变换后得到的频域数组维度也为<span class="arithmatex">\(N\)</span>）</p>
+<p>下面进行详细推导。</p>
+<p>我们知道，周期函数可以用傅里叶级数展开，在引入<span class="arithmatex">\(\delta(t)\)</span> 函数后，更一般的周期函数也能被展开了，因为可以使用<span class="arithmatex">\(\delta(t)\)</span> 函数进行采样，变成有限长离散序列，可以看成是周期信号。</p>
+<p>根据连续信号<span class="arithmatex">\(x(t)\)</span>按照采样时间<span class="arithmatex">\(T_s\)</span>进行抽样<span class="arithmatex">\(N\)</span>次<span class="arithmatex">\(\delta(t-nT_s)\)</span>，并将这<span class="arithmatex">\(N\)</span>个数值进行周期延拓，可以得到周期的离散信号<span class="arithmatex">\(x[n]\)</span>，其周期<span class="arithmatex">\(T=N*T_s\)</span>，频率为<span class="arithmatex">\(f=\frac{2\pi}{T}\)</span>，在一个周期<span class="arithmatex">\(T\)</span>内，其共表达式为:</p>
+<div class="arithmatex">\[x_s(t)=\sum\limits_{n = -\infty}^{\infty}x(t)\delta(t-nT_s)\]</div>
+<p>令<span class="arithmatex">\(\omega = f = \frac{2\pi}{T}\)</span></p>
+<p>可以获得离散周期信号的傅里叶级数为:</p>
+<p><span class="arithmatex">\(X[k\omega] = \frac{1}{T}\int\limits_{0}^{T}(\sum\limits_{n=0}^{N-1}x(t)\delta(t-nT_s))e^{-i\frac{2\pi}{T}kt}dt\)</span></p>
+<p>由<span class="arithmatex">\(\delta(t)\)</span>函数的筛选性，有</p>
+<p><span class="arithmatex">\(X[k\omega]=\frac{1}{NT_s}\sum\limits_{n=0}^{N-1}x(nT_s)e^{-i\frac{2\pi}{N}nk}\)</span></p>
+<p>令<span class="arithmatex">\(X[k\omega]T_s=X[k]\)</span></p>
+<p><span class="arithmatex">\(X[k]=\frac{1}{N}\sum\limits_{n=0}^{N-1}x(nT_s)e^{-i\frac{2\pi}{N}nk}=\frac{1}{N}\sum\limits_{n=0}^{N-1}x[n]e^{-i\frac{2\pi}{N}nk}\)</span></p>
+<p>这就是离散周期信号的傅里叶变换，理论上离散周期信号的频谱是有无穷多的，但是由于<span class="arithmatex">\(e^{-i\frac{2\pi}{N}nk}\)</span>的的周期性(将其展开成三角函数后sin和cos)，一般我们只取主值区间<span class="arithmatex">\(0=k&lt;N-1\)</span>进行研究。</p>
+<h2 id="4">4. 离散傅立叶变换的物理意义</h2>
+<p><strong>奈奎斯特采样定理</strong>：采样频率大于信号中最高频率的2倍时，采样后的数字信号可以完整地恢复出原始信号。一般实际应用中保证采样频率为信号最高频率的2.56~4倍。</p>
+<p>假设信号频率为<span class="arithmatex">\(F\)</span>，采样频率为<span class="arithmatex">\(F_s\)</span>，采样点数为<span class="arithmatex">\(N\)</span>。为了方便进行DFT运算，通常<span class="arithmatex">\(N\)</span>取2的整数次幂。</p>
+<p><span class="arithmatex">\(N\)</span>个采样点，经过DFT变换后的结果为N个复数，每个复数对应一个频率(第n&lt;=N/2个点对应的频率为(n-1)/N*Fs)，该复数的模值表示该频率的振幅特征。怎么去理解这段话呢，还要从信号的傅里叶级数复数形式说起，对于时域信号f(t)，其傅里叶级数展开为:</p>
+<p><span class="arithmatex">\(f(t) =c_0 + \sum\limits_{n=1}^{\infty}(c_ne^{i\frac{n\pi t}{l}}+c_{-n}e^{-i\frac{n\pi t}{l}})= \sum\limits_{n=-\infty}^{+\infty}c_ne^{i\frac{n\pi t}{l}}\)</span></p>
+<p>其中</p>
+<p><span class="arithmatex">\(c_0 = \frac{a_0}{2},c_n = \frac{a_n-ib_n}{2},c_{-n} = \frac{a_n+ib_n}{2},n=1,2,3...\)</span></p>
+<p>在离散傅里叶中，<span class="arithmatex">\(n\)</span>不是取无穷个，而是<span class="arithmatex">\(N\)</span>个，于是有:</p>
+<p><span class="arithmatex">\(f(t) =c_0 + \sum\limits_{n=1}^{\frac{N}{2}}(c_ne^{i\frac{n\pi t}{l}}+c_{-n}e^{-i\frac{n\pi t}{l}})= \sum\limits_{n=-\frac{N}{2}}^{\frac{N}{2}}c_ne^{i\frac{n\pi t}{l}}\)</span></p>
+<p><strong>可以看到，原始时域信号f(t)经DFT后，DFT的结果其实是原始信号傅里叶展开的个项系数，<span class="arithmatex">\(c_0\)</span>为常数项，<span class="arithmatex">\(c_n\)</span>是不同频率的正余弦系数。</strong></p>
+<p><strong>该振幅特征和原始信号的振幅之间的关系是：</strong>如果原始信号的振幅为A，则DFT结果的每个点(除了第一个直流分量点)的模值就是A的N/2倍；而第一个点的模值是直流分量振幅的N倍。同时，这N个复数点去掉第一个点(直流分量)后剩下的N-1个点是关于其中心共轭对称的，因此实际只需要取前一半点的频谱即可，因为共轭对称的两个点的模值(振幅)相同。</p>
+<p><strong><span class="arithmatex">\(\color{red}注意\)</span></strong>，<span class="arithmatex">\(\colorbox{Orange}{以上结论是针对numpy的fft运算结果总结的，在numpy.fft中没有进行1/N归一化处理，而上面推导中都是除N的}\)</span>，即</p>
+<p><span class="arithmatex">\(X[k]=\frac{1}{N}\sum\limits_{n=0}^{N-1}x[n]e^{-i\frac{2\pi}{N}nk},0\le k \le N-1\)</span>离散傅立叶变换的物理意义</p>
+<h2 id="5">5. 总结</h2>
+<h3 id="_1">连续信号傅立叶变换</h3>
+<p>模拟信号时间跨度无穷，采样频率无穷小，分解后对应的无穷个频率项</p>
+<h3 id="_2">离散时间傅立叶变换</h3>
+<p>模拟信号时间跨度无穷，采样频率固定，具有无穷个（无周期）时域离散点，分解后对应无穷个频率项</p>
+<h3 id="_3">离散傅立叶变换</h3>
+<p>对模拟信号时间跨度截断（再周期性延拓），采样频率固定，具有无穷个有周期的时域离散点（或者在实际处理中，不进行延拓的有限个时域离散点），分解后对应有限个频率项</p>
+<h2 id="_4">参考文献</h2>
+<p>https://zhuanlan.zhihu.com/p/405143684</p>
+<p>https://www.luogu.com.cn/blog/IowaBattleship/latex-gong-shi-tai-quan</p>
+<p>https://www.zhihu.com/question/489681533</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 <a href="https://wangqiudong.com"  target="_blank" rel="noopener">WANG QD</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://wangqiudong.com" target="_blank" rel="noopener" title="wangqiudong.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
